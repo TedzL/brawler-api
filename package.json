@@ -1,5 +1,5 @@
 {
-  "name": "brawlapi",
+  "name": "brawler-api",
   "version": "0.0.1",
   "description": "An updated API wrapper for the official Brawl Stars API, alongside support for proxies.",
   "main": "dist/index.js",
