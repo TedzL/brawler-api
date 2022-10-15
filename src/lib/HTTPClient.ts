@@ -37,6 +37,11 @@ export class HTTPClient {
         return await this.request(`/players/%23${tag}/battlelog`);
     }
 
+    async getClub(tag: string) {
+        tag = tag.toUpperCase().replace('#', '');
+        return await this.request(`/clubs/%23${tag}`);
+    }
+
     async getPlayer(tag: string) {
         tag = tag.toUpperCase().replace('#', '');
         return await this.request(`/players/%23${tag}`);

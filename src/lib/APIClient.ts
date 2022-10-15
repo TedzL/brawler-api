@@ -1,4 +1,5 @@
 import { BattleLog } from "../models/BattleLog";
+import { Club } from "../models/Club";
 import { Player } from "../models/Player";
 import { APIClientOptions } from "../types/APIClientOptions";
 import { HTTPClient } from "./HTTPClient";
@@ -19,7 +20,7 @@ export class APIClient {
     async getClub(tag: string) {
         const res = await this.HTTPClient.getClub(tag);
         if (res === undefined) return undefined;
-        return new BattleLog(res);
+        return new Club(res);
     }
 
     async getPlayer(tag: string) {
