@@ -1,4 +1,4 @@
-import { PlayerBrawlerData } from "../types/PlayerBrawlerData";
+import { PlayerData } from "../types/PlayerBrawlerData";
 
 export class Player {
     bestRoboRumbleTime: number;
@@ -18,7 +18,7 @@ export class Player {
     trioVictories: number;
     trophies: number;
 
-    constructor(data: PlayerBrawlerData) {
+    constructor(data: PlayerData) {
         this.bestRoboRumbleTime = data.bestRoboRumbleTime;
         this.bestTimeAsBigBrawler = data.bestTimeAsBigBrawler;
         this.brawlers = data.brawlers;

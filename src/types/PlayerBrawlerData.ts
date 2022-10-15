@@ -1,4 +1,4 @@
-export type PlayerBrawlerData = {
+export type PlayerData = {
     bestRoboRumbleTime: number;
     bestTimeAsBigBrawler: number;
     brawlers: { id: number, name: string, power: number, rank: number, trophies: number, highestTrophies: number, gears: { id: number, name: string, level: number }[], starPowers: { id: number, name: string }[], gadgets: { id: number, name: string }[] }
