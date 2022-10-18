@@ -1,7 +1,15 @@
 export class BattleLog {
-    battles: {}[];
+    battles: {
+        battleTime: string;
+        event: {},
+        battle: {},
+    }[];
 
-    constructor(data: {}[]) {
+    constructor(data: {
+        battleTime: string;
+        event: {},
+        battle: {},
+    }[]) {
         this.battles = data;
     }
 }

@@ -1,21 +1,23 @@
 import { HTTPClientOptions } from "../types/HTTPClientOptions";
 import fetch from 'node-fetch';
 
-const officialURL = 'https://api.brawlstars.com/v1';
-const proxyURL = 'https://bsproxy.royaleapi.dev/v1';
+const bsOfficialURLs = {
+    official: 'https://api.brawlstars.com/v1',
+    proxy: 'https://bsproxy.royaleapi.dev/v1',
+};
 
 export class HTTPClient {
     apiKey: string;
-    baseURL: string;
+    urls: { bsOfficialURL: string, };
     headers: { Authorization: string; Accept: string; };
 
     constructor(options: HTTPClientOptions) {
         this.apiKey = options.apiKey;
 
         if (options.useProxy) {
-            this.baseURL = proxyURL;
+            this.urls.bsOfficialURL = bsOfficialURLs.proxy;
         } else {
-            this.baseURL= officialURL;
+            this.urls.bsOfficialURL = bsOfficialURLs.official;
         }
 
         this.headers = {
@@ -24,8 +26,8 @@ export class HTTPClient {
         };
     }
 
-    private async request(endpoint: string) {
-        const res = await fetch(this.baseURL+endpoint, {
+    private async bsOfficialRequest(endpoint: string) {
+        const res = await fetch(this.urls.bsOfficialURL+endpoint, {
             headers: this.headers
         });
         if (!res.ok) return undefined;
@@ -34,17 +36,17 @@ export class HTTPClient {
 
     async getBattleLog(tag: string) {
         tag = tag.toUpperCase().replace('#', '');
-        return await this.request(`/players/%23${tag}/battlelog`);
+        return await this.bsOfficialRequest(`/players/%23${tag}/battlelog`);
     }
 
     async getClub(tag: string) {
         tag = tag.toUpperCase().replace('#', '');
-        return await this.request(`/clubs/%23${tag}`);
+        return await this.bsOfficialRequest(`/clubs/%23${tag}`);
     }
 
     async getPlayer(tag: string) {
         tag = tag.toUpperCase().replace('#', '');
-        return await this.request(`/players/%23${tag}`);
+        return await this.bsOfficialRequest(`/players/%23${tag}`);
     }
 
 }
